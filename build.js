@@ -13,7 +13,7 @@ fs.copyFileSync('app/manifest.json', 'dist/manifest.json');
 if (!fs.existsSync('dist/scripts')) {
   fs.mkdirSync('dist/scripts', { recursive: true });
 }
-fs.copyFileSync('app/background.js', 'dist/background.js');
+fs.copyFileSync('app/scripts.babel/background.js', 'dist/background.js');
 fs.copyFileSync('app/scripts/contentscript.js', 'dist/scripts/contentscript.js');
 
 // Copy images
