@@ -70,7 +70,7 @@ gulp.task('chromeManifest', () => {
     .pipe($.chromeManifest({
       buildnumber: true,
       background: {
-        target: 'scripts/background.js',
+        target: 'background.js',
         exclude: [
           'scripts/chromereload.js'
         ]
@@ -127,9 +127,19 @@ gulp.task('package', function () {
       .pipe(gulp.dest('package'));
 });
 
+gulp.task('copyManifest', () => {
+  return gulp.src('app/manifest.json')
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('copyScripts', () => {
+  return gulp.src('app/scripts/**/*.js')
+    .pipe(gulp.dest('dist/scripts'));
+});
+
 gulp.task('build',
   gulp.series(
-    'lint', 'babel', 'chromeManifest',
+    'lint', 'babel', 'copyManifest', 'copyScripts',
     gulp.parallel('html', 'images', 'extras'),
     'size',
   )
