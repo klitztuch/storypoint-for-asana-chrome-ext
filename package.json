@@ -6,7 +6,8 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "package": "gulp package"
+    "package": "gulp package",
+    "build": "node build.js"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
